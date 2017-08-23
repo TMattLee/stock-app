@@ -1,0 +1,24 @@
+.domainContainer {
+  width:              200px;
+  display:            flex;
+}
+
+.domainButton, .domainButtonActive {
+  font-family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  text-transform:     uppercase;
+  font-size:          0.7em;
+  background-color:   #eee;
+  color:              #999;
+  margin:             5px;
+  padding:            2px 5px;
+}
+
+.domainButton:hover {
+  background-color:   #999;
+  color:              #eee;
+}
+
+.domainButtonActive {
+  background-color:   #999;
+  color:              #eee;
+}

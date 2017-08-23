@@ -1,0 +1,26 @@
+.symbolContainer {
+  background-color:   white;
+  display:            flex;
+  justify-content:    space-between;
+  padding:            5px;
+  margin:             5px 5px 5px 0px;
+}
+
+.symbolContainer:hover {
+  margin:             5px 0px 5px 5px;
+}
+.symbolText {
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+.imgX {
+  width:              15px;
+  height:             15px;
+  margin-top:         2px;
+  z-index:            99;
+}
+
+.imgX:hover {
+  cursor:             pointer;
+}

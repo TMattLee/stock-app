@@ -1,0 +1,106 @@
+.itemContainer {
+  display:            flex;
+  width:              1250px;
+  margin:             20px auto 10px auto;
+}
+
+.containerCenter {
+  display:            flex;
+  flex-direction:     column;
+  flex:               17;
+  min-height:         800px;
+  margin-bottom:      50px;
+  margin-left:        20px;
+  border-radius:      2px;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+.containerSide {
+  display:            flex;
+  flex-direction:     column;
+  flex:               3;
+  height:             800px;
+  border-radius:      2px;
+}
+
+.text {
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+.textForm {
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  margin:             0px;
+  font-size:          0.85em;
+}
+
+.messageContainer {
+  top:                200px;
+  left:               200px;
+}
+
+.message {
+  color:              red;
+  float:              left;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif; 
+  font-size:          0.8em;
+  margin-left:        5px 0px;
+  height:             30px;
+}
+
+.button, .buttonInactive {
+  background-color:   #ccc;
+  float:              right;
+  border:             1px solid #333;
+  border-radius:      2px;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  margin:             5px 0px;
+  position:           relative;
+  left:               -83px;
+  top:                2px;
+  height:             18px;
+}
+
+.buttonInactive {
+  background-color:   #aaa;
+  float:              right;
+  color:              #999;
+  border:             1px solid #333;
+}
+
+.symbolInput {
+  width:              100px;
+  margin:             5px 0px;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+.modalClass {
+  display:            flex;
+  justify-content:    center;
+  align-items:        center;
+  height:             250px;
+  width:              250px;
+  margin:             auto;
+  background:         #fff;
+  overflow:           auto;
+  border-radius:      4px;
+  outline:            none;
+  background-color:   rgba(204, 195, 195, 0.0);
+}
+
+.modalOverlayClass {
+  position:           fixed;
+  top:                0;
+  left:               0;
+  right:              0;
+  bottom:             0;
+  display:            flex;
+  justify-content:    center;
+  align-items:        center;
+  background-color:   rgba(204, 195, 195, 0.30);
+}

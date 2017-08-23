@@ -1,0 +1,28 @@
+.text {
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+.chart {
+  background-color:   #222;
+  color:              #ccc;
+  padding:            15px -1px 20px 50px;
+}
+
+.tooltipText {
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif;
+  font-size:          0.5em;
+}
+
+.rect {
+  fill:               rgba( 200, 200, 200, 0.8);
+  box-shadow:         0px 0px 2px #333333;
+}
+
+.axis {
+  fill:               #ddd;
+  text-transform:     uppercase;
+  font-Family:        "Fira Sans", Helvetica, Arial, sans-serif; 
+  font-size:          0.5em;
+}

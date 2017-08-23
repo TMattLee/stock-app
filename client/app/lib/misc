@@ -1,0 +1,39 @@
+/*----------------------------------------------------------------------------
+   ------------ Formatting data for recharts
+  
+  if( props.data.length > 0){
+    let dateReference = [];
+    for ( let i = 0; i < 365; i++ ){
+      let newDate = new Date();
+      newDate.setDate( newDate.getDate() - i );
+      let newDateString = newDate.getFullYear() + '-' + 
+        ( '0' + ( parseInt( newDate.getMonth() + 1 ) ) ).slice( -2 ) + '-' + 
+        ( '0' + newDate.getDate()  ).slice( -2 );
+      dateReference.push(newDateString)
+    }
+  
+    dateReference.map( ( value, key ) => {
+      let itemString = '';
+      let dateString = 
+      itemString += '{"date": \"' + value + '\",';
+      props.data.map( ( item, key ) => {
+        const newItem = props.data[key].data.filter( ( array ) =>{
+          if( array ) return array[0] === value;
+          return false;
+        })
+        if(newItem[0]){
+          let arrayString = ' "'+ item.code + '": ' + newItem[0][1] + ',';
+          itemString += arrayString;
+        }
+      })
+      itemString = itemString.slice( 0, -1 );
+      itemString += '}';
+      const dataObj = JSON.parse( itemString );
+
+      data.push( dataObj );
+    });
+  }
+  else{
+    return <div></div>
+  }
+  --------------------------------------------------------------------*/
