@@ -15,6 +15,8 @@ var app = express();
 
 mongoose.connect( process.env.MONGOLAB_URI );
 
+const apiKey = process.env.STOCK_API_KEY;
+
 /*------------------------------------------------------------------------------
 ------------------------------ Mongoose Schemas --------------------------------
 ------------------------------------------------------------------------------*/
@@ -54,15 +56,16 @@ app.get("/", (req, res) => {
 
 app.post('/addstock', ( req, res ) => {
   const { stock } = req.body;
-  var now = new Date();
+  var now = new Date("03/01/2018");
   var year = now.getFullYear();
   var month = now.getMonth() + 1;
   var date = now.getDate();
-  const url = `https://www.quandl.com/api/v3/datasets/WIKI/${ stock }.json?` +
-      `column_index=2` +
-      `&api_key=${ process.env.STOCK_API_KEY }` +
-      `&start_date=${ year - 1 }-${ month }-${ date }` +
-      `&end_date=${ year }-${ month }-${ date }`
+  const url = `https://www.quandl.com/api/v3/datasets/WIKI/${ stock }.json?`
+      + `column_index=2`
+      + `&api_key=${ apiKey }`
+      + `&start_date=${ year - 1 }-${ month }-${ date }`
+      + `&end_date=${ year }-${ month }-${ date }`;
+      
   axios({
     method: "GET",
     url: url ,
@@ -70,23 +73,28 @@ app.post('/addstock', ( req, res ) => {
     .then( ( response ) => {
       const { dataset } = response.data
       if( dataset.data.length === 0 ){
-        res.send("NOT_FOUND");
+        return res.send("NOT_FOUND");
       }
-      else {
-        res.send( {
-          code: dataset.dataset_code,
-          prices: dataset.data
-        });
-      }
+      
+      res.send( {
+        code: dataset.dataset_code,
+        prices: dataset.data
+      });
+      
     })
     .catch( error =>{
       console.log( error.response.data );
+      
+      if( error.response.data.quandl_error.code === 'QEAx01' ){
+        return res.send("API_ERROR");
+      }
+      
       if( error.response.data.quandl_error.code === 'QECx02' ){
-       res.send("NOT_FOUND");
+        return res.send("NOT_FOUND");
       }
-      else{
-        res.send("ERROR");
-      }
+     
+      return res.send("ERROR");
+      
     });
 });
 
@@ -107,7 +115,7 @@ app.get('/getcurrent', ( req, res ) => {
 ---------------------------------- Socket.io------------------------------------
 ------------------------------------------------------------------------------*/
 
-const port = 3002;
+const port = process.env.PORT;
 
 const server = app.listen(port, function(err) {  
   if (err) {
@@ -144,7 +152,7 @@ io.on('connection', (socket) => {
           new: true,
           upsert: true
         },
-        ( error, doc ) =>{
+        ( error, doc ) => {
           if ( error ) console.log( error );
           io.emit( 'RECEIVE_DATA', { data: doc.data } )
         }

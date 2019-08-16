@@ -45,6 +45,13 @@ function currentState( state=initialState,actions ){
         });
       }
       
+      if ( actions.data === "API_ERROR"){
+        return Object.assign( {}, state, {
+          done:             actions.done,
+          message:          "API ERROR Contact Administrator",
+        });
+      }
+      
       if( state.data.length === 0 ){
         newData.push( actions.data );
         socket.emit('GOT_NEW_DATA',{

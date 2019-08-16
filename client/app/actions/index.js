@@ -41,7 +41,7 @@ export const getData = ( stock ) => {
       })
     })
     .catch( error => {
-      console.log( 'error getting data' );
+      console.log(error);
     });
   }
 }
